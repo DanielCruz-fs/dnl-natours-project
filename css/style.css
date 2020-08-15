@@ -23,14 +23,59 @@ body {
   padding: 30px;
 }
 
-.header {
+/****** HEADER ******/ 
+.header { 
   /* At every point of view it will take 95% of the view port*/
   height: 95vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8)),
-                    url(../images/hero.jpg);
+                    url(../img/hero.jpg);
   /* What cover does is that whatever the width of the viewport, or the element, it'll always try to fit
     the element inside of the box. */
   background-size: cover;
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  /* Always put position relative 'cause it's the parent */
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  /* We can play with position, the origin reference it's the parent */
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+  /* The width of the image is handled by the browser */
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  /* Transform is used for: translate the position of an element itself*/
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.heading-primary-main {
+  /* Span is default an inline element so we change it */
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  /* Check how you import the fonts in head tag, there you have the weight range */
+  font-weight: 700;
+  letter-spacing: 19.4px;
 }
