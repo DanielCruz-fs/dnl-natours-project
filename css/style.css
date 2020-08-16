@@ -79,3 +79,19 @@ body {
   font-weight: 700;
   letter-spacing: 19.4px;
 }
+
+/* There are 2 types of animation: using transition and key frames */
+@keyframes moveInLeft {
+  /* start */
+  0% {
+
+  }
+  /* any % that we want */
+  80% {
+    
+  }
+  /* end */
+  100% {
+
+  }
+}
