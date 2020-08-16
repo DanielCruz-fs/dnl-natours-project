@@ -47,8 +47,8 @@ body {
 }
 
 .logo {
-  height: 35px;
   /* The width of the image is handled by the browser */
+  height: 35px;
 }
 
 .text-box {
@@ -62,6 +62,8 @@ body {
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+  /* Hack to fix an animation that shakes */
+  /* backface-visibility: hidden; */
 }
 
 .heading-primary-main {
@@ -70,6 +72,15 @@ body {
   font-size: 60px;
   font-weight: 400;
   letter-spacing: 35px;
+
+  /* Applying keyframe animation */
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  /* This controls the animation's workflow */
+  animation-timing-function: ease-out;
+  /* other useful properties to animate */
+  /* animation-delay: 3s;
+  animation-iteration-count: 3; */
 }
 
 .heading-primary-sub {
@@ -78,20 +89,41 @@ body {
   /* Check how you import the fonts in head tag, there you have the weight range */
   font-weight: 700;
   letter-spacing: 19.4px;
+  /* Applying animation shorthand */
+  animation: moveInRight 1s ease-out;
 }
 
 /* There are 2 types of animation: using transition and key frames */
 @keyframes moveInLeft {
   /* start */
   0% {
-
+    opacity: 0;
+    transform: translateX(-100px);
   }
   /* any % that we want */
   80% {
-    
+    transform: translateX(10px);
   }
   /* end */
   100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
+@keyframes moveInRight {
+  /* start */
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  /* any % that we want */
+  80% {
+    transform: translateX(-10px);
+  }
+  /* end */
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
