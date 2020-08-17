@@ -57,6 +57,7 @@ body {
   left: 50%;
   /* Transform is used for: translate the position of an element itself*/
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .heading-primary {
@@ -64,6 +65,8 @@ body {
   text-transform: uppercase;
   /* Hack to fix an animation that shakes */
   /* backface-visibility: hidden; */
+
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -126,4 +129,78 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@keyframes moveInBottom {
+  /* start */
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  /* end */
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* PSEUDO ELEMENTS AND CLASSES */
+/* Pseudo classes are special state of the selector: :link */
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  /* CSS transitions allows you to change property values smoothly, over a given duration */
+  transition: all .2s;
+
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Active when it is clicked */
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+/* Pseudo ELEMENTS */
+.btn::after {
+  content: "";
+  /* we want it to look the same as our original button */
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  /* Transitions always at initial state */
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  /* For fading something out */
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out .75s;
+  /* For animation with delays initial values */
+  animation-fill-mode: backwards;
 }
