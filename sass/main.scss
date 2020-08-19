@@ -4,6 +4,7 @@ Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
 */
+
 /* BEM RULE FOR NOTATION:
    BLOCK: Standalone component that is meaningful on its own
    ELEMETN: Part of a block that has no standalone meaning
@@ -14,75 +15,101 @@ Dark green: #28b485
 /* FOR ARCHITECTURE USE 7-1 PATTERN
    7 Different folders for partial Sass files, and 1 main Sass file to import
    other files into a complied CSS stylesheet */
+
+// ******** SASS VARIABLES ******** //
+$color-primary: #55c57a; 
+$color-primary-light: #7ed56f; 
+$color-primary-dark: #28b485; 
+$color-gray-dark: #777;
+$color-white: #fff;
+$color-black: #000;
+
 /* Reset normalization */
 *, *::after, *::before {
   margin: 0px;
   padding: 0px;
   /* It changes the box model so that the borders and the paddings are no longer added
      to the total width or the total height that we specify for a box*/
+
   /* Example: without box-sizing default total width: rb + rp + specified width + lp + lb */
   /* With border box: total width: specified width */
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 /* The root font size is set in the HTML */
 /* GLOBAL FONT SIZE CONFIGURATION using REM relative unit*/
 html {
   /* 1 rem is exactly the root size (1rem == 10px) */
   /* Now to convert all units all we need to do is divide by 10px simple calculation otherwise */
+
   /* Default size of the browser is 16px if we leave this as it is
      the user will not be able to zoom in or our from the explorer */
   /* font-size: 10px; */
+
   /* Solution: use percentage % (10px x (100%/16px)) */
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   /* font-size: 16px; */
   line-height: 1.7;
-  color: #777;
-  padding: 3rem; }
+  color: $color-gray-dark;
+  padding: 3rem;
+}
 
-/****** HEADER ******/
-.header {
+/****** HEADER ******/ 
+.header { 
   /* At every point of view it will take 95% of the view port*/
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+                    url(../img/hero.jpg);
   /* What cover does is that whatever the width of the viewport, or the element, it'll always try to fit
     the element inside of the box. */
   background-size: cover;
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
   /* Always put position relative 'cause it's the parent */
-  position: relative; }
-  .header__logo-box {
+  position: relative;
+
+  &__logo-box {
     position: absolute;
     /* We can play with position, the origin reference it's the parent */
     top: 4rem;
-    left: 4rem; }
-  .header__logo {
+    left: 4rem;
+  }
+
+  &__logo {
     /* The width of the image is handled by the browser */
-    height: 3.5rem; }
-  .header__text-box {
+    height: 3.5rem;
+  }
+
+  &__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
     /* Transform is used for: translate the position of an element itself*/
     transform: translate(-50%, -50%);
-    text-align: center; }
+    text-align: center;
+  }
+}
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
   /* Hack to fix an animation that shakes */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .heading-primary--main {
+  backface-visibility: hidden; 
+  margin-bottom: 6rem;
+
+  &--main {
     /* Span is default an inline element so we change it */
     display: block;
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
+
     /* Applying keyframe animation */
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -90,59 +117,73 @@ body {
     animation-timing-function: ease-out;
     /* other useful properties to animate */
     /* animation-delay: 3s;
-    animation-iteration-count: 3; */ }
-  .heading-primary--sub {
+    animation-iteration-count: 3; */
+  }
+
+  &--sub {
     display: block;
     font-size: 2rem;
     /* Check how you import the fonts in head tag, there you have the weight range */
     font-weight: 700;
     letter-spacing: 1.95rem;
     /* Applying animation shorthand */
-    animation: moveInRight 1s ease-out; }
+    animation: moveInRight 1s ease-out;
+  }
+}
+
 
 /* There are 2 types of animation: using transition and key frames */
 @keyframes moveInLeft {
   /* start */
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
   /* any % that we want */
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem);
+  }
   /* end */
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 @keyframes moveInRight {
   /* start */
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
   /* any % that we want */
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
   /* end */
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 @keyframes moveInBottom {
   /* start */
   0% {
     opacity: 0;
-    transform: translateY(4rem); }
+    transform: translateY(4rem);
+  }
   /* end */
   100% {
     opacity: 1;
-    transform: translateY(0); } }
+    transform: translateY(0);
+  }
+}
 
 .btn {
   /* PSEUDO ELEMENTS AND CLASSES */
   /* Pseudo classes are special state of the selector: :link */
-  /* Active when it is clicked */
-  /* Pseudo ELEMENTS */ }
-  .btn:link, .btn:visited {
+  &:link, &:visited {
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.5rem 4rem;
@@ -150,24 +191,40 @@ body {
     border-radius: 10rem;
     /* CSS transitions allows you to change property values smoothly, over a given duration */
     transition: all .2s;
+
     position: relative;
-    font-size: 1.6rem; }
-  .btn:hover {
+
+    font-size: 1.6rem;
+  }
+
+  &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-    .btn:hover::after {
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
       transform: scaleX(1.4) scaleY(1.6);
       /* For fading something out */
-      opacity: 0; }
-  .btn:active {
+      opacity: 0;
+    }
+  }
+
+  /* Active when it is clicked */
+  &:active {
     transform: translateY(-1px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-  .btn--white {
-    background-color: #fff;
-    color: #777; }
-    .btn--white::after {
-      background-color: #fff; }
-  .btn::after {
+    box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-gray-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  /* Pseudo ELEMENTS */
+  &::after {
     content: "";
     /* we want it to look the same as our original button */
     display: inline-block;
@@ -179,8 +236,12 @@ body {
     left: 0;
     z-index: -1;
     /* Transitions always at initial state */
-    transition: all .4s; }
-  .btn--animated {
+    transition: all .4s;
+  }
+
+  &--animated {
     animation: moveInBottom .5s ease-out .75s;
     /* For animation with delays initial values */
-    animation-fill-mode: backwards; }
+    animation-fill-mode: backwards;
+  }
+}
