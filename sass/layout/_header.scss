@@ -1,0 +1,36 @@
+/****** HEADER ******/ 
+.header { 
+  /* At every point of view it will take 95% of the view port*/
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+                    url(../img/hero.jpg);
+  /* What cover does is that whatever the width of the viewport, or the element, it'll always try to fit
+    the element inside of the box. */
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  /* Always put position relative 'cause it's the parent */
+  position: relative;
+
+  &__logo-box {
+    position: absolute;
+    /* We can play with position, the origin reference it's the parent */
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    /* The width of the image is handled by the browser */
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* Transform is used for: translate the position of an element itself*/
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}

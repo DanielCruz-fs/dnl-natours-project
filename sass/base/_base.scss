@@ -1,0 +1,28 @@
+// Partial files always with a _ prefix
+// This file is for the basic definition of our entire project
+
+/* Reset normalization */
+*, *::after, *::before {
+  margin: 0px;
+  padding: 0px;
+  /* It changes the box model so that the borders and the paddings are no longer added
+     to the total width or the total height that we specify for a box*/
+
+  /* Example: without box-sizing default total width: rb + rp + specified width + lp + lb */
+  /* With border box: total width: specified width */
+  box-sizing: border-box;
+}
+
+/* The root font size is set in the HTML */
+/* GLOBAL FONT SIZE CONFIGURATION using REM relative unit*/
+html {
+  /* 1 rem is exactly the root size (1rem == 10px) */
+  /* Now to convert all units all we need to do is divide by 10px simple calculation otherwise */
+
+  /* Default size of the browser is 16px if we leave this as it is
+     the user will not be able to zoom in or our from the explorer */
+  /* font-size: 10px; */
+
+  /* Solution: use percentage % (10px x (100%/16px)) */
+  font-size: 62.5%;
+}

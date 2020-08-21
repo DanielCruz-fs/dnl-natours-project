@@ -1,0 +1,47 @@
+/* There are 2 types of animation: using transition and key frames */
+@keyframes moveInLeft {
+  /* start */
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  /* any % that we want */
+  80% {
+    transform: translateX(1rem);
+  }
+  /* end */
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  /* start */
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  /* any % that we want */
+  80% {
+    transform: translateX(-1rem);
+  }
+  /* end */
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  /* start */
+  0% {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  /* end */
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -14,92 +14,6 @@ Dark green: #28b485
 /* FOR ARCHITECTURE USE 7-1 PATTERN
    7 Different folders for partial Sass files, and 1 main Sass file to import
    other files into a complied CSS stylesheet */
-/* Reset normalization */
-*, *::after, *::before {
-  margin: 0px;
-  padding: 0px;
-  /* It changes the box model so that the borders and the paddings are no longer added
-     to the total width or the total height that we specify for a box*/
-  /* Example: without box-sizing default total width: rb + rp + specified width + lp + lb */
-  /* With border box: total width: specified width */
-  box-sizing: border-box; }
-
-/* The root font size is set in the HTML */
-/* GLOBAL FONT SIZE CONFIGURATION using REM relative unit*/
-html {
-  /* 1 rem is exactly the root size (1rem == 10px) */
-  /* Now to convert all units all we need to do is divide by 10px simple calculation otherwise */
-  /* Default size of the browser is 16px if we leave this as it is
-     the user will not be able to zoom in or our from the explorer */
-  /* font-size: 10px; */
-  /* Solution: use percentage % (10px x (100%/16px)) */
-  font-size: 62.5%; }
-
-body {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  /* font-size: 16px; */
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem; }
-
-/****** HEADER ******/
-.header {
-  /* At every point of view it will take 95% of the view port*/
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  /* What cover does is that whatever the width of the viewport, or the element, it'll always try to fit
-    the element inside of the box. */
-  background-size: cover;
-  background-position: top;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* Always put position relative 'cause it's the parent */
-  position: relative; }
-  .header__logo-box {
-    position: absolute;
-    /* We can play with position, the origin reference it's the parent */
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    /* The width of the image is handled by the browser */
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    /* Transform is used for: translate the position of an element itself*/
-    transform: translate(-50%, -50%);
-    text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* Hack to fix an animation that shakes */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    /* Span is default an inline element so we change it */
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    /* Applying keyframe animation */
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    /* This controls the animation's workflow */
-    animation-timing-function: ease-out;
-    /* other useful properties to animate */
-    /* animation-delay: 3s;
-    animation-iteration-count: 3; */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    /* Check how you import the fonts in head tag, there you have the weight range */
-    font-weight: 700;
-    letter-spacing: 1.95rem;
-    /* Applying animation shorthand */
-    animation: moveInRight 1s ease-out; }
-
 /* There are 2 types of animation: using transition and key frames */
 @keyframes moveInLeft {
   /* start */
@@ -136,6 +50,64 @@ body {
   100% {
     opacity: 1;
     transform: translateY(0); } }
+
+/* Reset normalization */
+*, *::after, *::before {
+  margin: 0px;
+  padding: 0px;
+  /* It changes the box model so that the borders and the paddings are no longer added
+     to the total width or the total height that we specify for a box*/
+  /* Example: without box-sizing default total width: rb + rp + specified width + lp + lb */
+  /* With border box: total width: specified width */
+  box-sizing: border-box; }
+
+/* The root font size is set in the HTML */
+/* GLOBAL FONT SIZE CONFIGURATION using REM relative unit*/
+html {
+  /* 1 rem is exactly the root size (1rem == 10px) */
+  /* Now to convert all units all we need to do is divide by 10px simple calculation otherwise */
+  /* Default size of the browser is 16px if we leave this as it is
+     the user will not be able to zoom in or our from the explorer */
+  /* font-size: 10px; */
+  /* Solution: use percentage % (10px x (100%/16px)) */
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* Hack to fix an animation that shakes */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    /* Span is default an inline element so we change it */
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /* Applying keyframe animation */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    /* This controls the animation's workflow */
+    animation-timing-function: ease-out;
+    /* other useful properties to animate */
+    /* animation-delay: 3s;
+    animation-iteration-count: 3; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    /* Check how you import the fonts in head tag, there you have the weight range */
+    font-weight: 700;
+    letter-spacing: 1.95rem;
+    /* Applying animation shorthand */
+    animation: moveInRight 1s ease-out; }
 
 .btn {
   /* PSEUDO ELEMENTS AND CLASSES */
@@ -184,3 +156,31 @@ body {
     animation: moveInBottom .5s ease-out .75s;
     /* For animation with delays initial values */
     animation-fill-mode: backwards; }
+
+/****** HEADER ******/
+.header {
+  /* At every point of view it will take 95% of the view port*/
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /* What cover does is that whatever the width of the viewport, or the element, it'll always try to fit
+    the element inside of the box. */
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* Always put position relative 'cause it's the parent */
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    /* We can play with position, the origin reference it's the parent */
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    /* The width of the image is handled by the browser */
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* Transform is used for: translate the position of an element itself*/
+    transform: translate(-50%, -50%);
+    text-align: center; }
