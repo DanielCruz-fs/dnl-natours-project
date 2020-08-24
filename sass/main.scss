@@ -18,18 +18,25 @@ Dark green: #28b485
 
 
 //Importting Sass files, we do not need the _ prefix nor the extension .scss
+
+// ABSTRACTS
 @import "abstracts/functions";
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
+// BASE
 @import "base/animations";
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
 
+// COMPONENTS
 @import "components/button";
+@import "components/composition";
 
+// LAYOUT
 @import "layout/grid";
 @import "layout/header";
 
+// PAGES
 @import "pages/home.scss";
