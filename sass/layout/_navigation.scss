@@ -46,6 +46,9 @@
     width: 0;
     // Cubic functions references: https://cubic-bezier.com/#.14,1.47,.26,-0.26 https://easings.net/
     transition: all .8s cubic-bezier(0.86, -0.55, 0.256, 1.55);
+
+    // BUG WHEN TRYING TO POINT TO ACTIONS
+    pointer-events: none;
   }
 
   &__list {
@@ -100,6 +103,8 @@
   &__checkbox:checked ~ &__nav {
     opacity: 1;
     width: 100%;
+    // BUG WHEN TRYING TO POINT TO ACTIONS SOLVED
+    pointer-events: all;
   }
 
   // Icon functionality
