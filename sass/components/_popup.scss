@@ -7,6 +7,13 @@
   background-color: rgba($color-black, .8);
   z-index: 9999;
 
+  // Functionality for displaying modal popup
+  // display: none; does not work for animations over time
+  // using opacity we say the contebt is still there that where visibility works
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+
   &__content {
     @include absCenter;
     width: 75%;
@@ -20,6 +27,12 @@
     display: table;
     // Correction for overflow from the image
     overflow: hidden;
+
+    // Animation effect coming towards to the user
+    // we can have one only property in a block css that is why we repeat code from the mixin
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.25);
+    transition: all .5s .2s;
   }
 
   &__left {
@@ -59,5 +72,33 @@
     -webkit-hyphens: auto;
 
     hyphens: auto;
+  }
+
+  // OPEN STATES
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:target &__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__close {
+    &:link, &:visited {
+      color: $color-gray-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .2s;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 }
