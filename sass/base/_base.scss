@@ -16,13 +16,28 @@
 /* The root font size is set in the HTML */
 /* GLOBAL FONT SIZE CONFIGURATION using REM relative unit*/
 html {
-  /* 1 rem is exactly the root size (1rem == 10px) */
+  /* We set the font-size to 62.5% as a result we have:
+     1 rem is exactly the root size (1rem == 10px) */
   /* Now to convert all units all we need to do is divide by 10px simple calculation otherwise */
 
   /* Default size of the browser is 16px if we leave this as it is
-     the user will not be able to zoom in or our from the explorer */
+     the user will not be able to zoom in or out from the explorer if
+     the user changes the default font-size of his explorer
+  */
   /* font-size: 10px; */
 
   /* Solution: use percentage % (10px x (100%/16px)) */
-  font-size: 62.5%;
+  font-size: 62.5%; // 1rem === 10px (10px*100%/16px = 62.5%)
+
+  /* Be careful in the order, when using max-width always the larger ones before the smaller ones */ 
+  /* NOTE: INCLUDE MEDIA QUERIES MANUALLY INTO MAIN CSS FOR SOME REASON NODE:SASS CAN NOT COMPILE THEM*/
+  @include respond(tap-land) { // width < 1200 ?
+    font-size: 56.25%; // 1rem === 9px (9px*100%/16px = 56.25%)
+  }
+  @include respond(tap-port) { // width < 900 ?
+    font-size: 50%; // 1rem === 8px (8px*100%/16px = 50%)
+  }
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem === 12px (12px*100%/16px = 75%)
+  }
 }
