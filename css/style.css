@@ -34,6 +34,8 @@ Dark green: #28b485
    
    1em === 16px (defult user browser)
    
+   ORDER TO MAKE RESPONSIVE DESIGN:
+   Base + typography > general layout + grid > page layout > components
 */
 /* There are 2 types of animation: using transition and key frames */
 @keyframes moveInLeft {
@@ -95,18 +97,16 @@ html {
   /* font-size: 10px; */
   /* Solution: use percentage % (10px x (100%/16px)) */
   font-size: 62.5%;
-  /* Be careful in the order, when using max-width always the larger ones before the smaller ones */
-  /* NOTE: INCLUDE MEDIA QUERIES MANUALLY INTO MAIN CSS FOR SOME REASON NODE:SASS CAN NOT COMPILE THEM*/ }
-  @media (max-width: 75em) {
-    html { font-size: 56.25%; }
-  }
-  @media (max-width: 56.25em) {
-    html { font-size: 50%; }
-  }
-  @media (min-width: 112.5em) {
+  /* Be careful in the order, when using max-width always the larger ones before the smaller ones */ }
+  @media only screen and (max-width: 75em) {
     html {
-      font-size: 75%; } 
-  }
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   font-family: 'Lato', sans-serif;
