@@ -8,6 +8,10 @@
   // Transition in order to run the animation (hover, etc.) SMOOTHLY
   transition: transform .3s;
 
+  @include respond(tab-port) {
+    padding: 2rem;
+  }
+
   &__icon {
     // We can manipulate an icon as a font sice it's just a font
     font-size: 6rem;
@@ -20,6 +24,10 @@
 
     -webkit-background-clip: text;
     color: transparent;
+
+    @include respond(tab-port) {
+      margin-bottom: 0;
+    }
   }
 
   &:hover {
