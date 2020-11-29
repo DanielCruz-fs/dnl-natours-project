@@ -8,15 +8,21 @@
     the element inside of the box. */
   background-size: cover;
   background-position: top;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   /* Always put position relative 'cause it's the parent */
   position: relative;
 
-  // * Show the big image for high resolution devices like apple's ones
+  // * Use supports when some attribute is not supported for other browsers in this case safari
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  }
+
+  // * Show the big image for high resolution devices like apple's ones (webkit for safari)
   // * For including high-res graphics or images, but only for screens that can make use of them. “Retina” being “2x”:
-  @media (min-resolution: 192dpi) and (min-width: 600px), (min-width: 2000px) {
+  @media (min-resolution: 192dpi) and (min-width: 600px),
+         (-webkit-min-device-pixel-ratio: 2) and (min-width: 600px),
+         (min-width: 2000px) {
     background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.8), rgba($color-secondary-dark, 0.8)),
                       url(../img/hero.jpg);
   }
