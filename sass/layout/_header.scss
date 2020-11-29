@@ -3,7 +3,7 @@
   /* At every point of view it will take 95% of the view port*/
   height: 95vh;
   background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
-                    url(../img/hero.jpg);
+                    url(../img/hero-small.jpg);
   /* What cover does is that whatever the width of the viewport, or the element, it'll always try to fit
     the element inside of the box. */
   background-size: cover;
@@ -13,6 +13,13 @@
 
   /* Always put position relative 'cause it's the parent */
   position: relative;
+
+  // * Show the big image for high resolution devices like apple's ones
+  // * For including high-res graphics or images, but only for screens that can make use of them. “Retina” being “2x”:
+  @media (min-resolution: 192dpi) and (min-width: 600px), (min-width: 2000px) {
+    background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.8), rgba($color-secondary-dark, 0.8)),
+                      url(../img/hero.jpg);
+  }
 
   @include respond(phone) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
