@@ -186,6 +186,10 @@ body {
   .paragrahp:not(:last-child) {
     margin-bottom: 3rem; }
 
+::selection {
+  background-color: #55c57a;
+  color: #fff; }
+
 .u-center-text {
   text-align: center !important; }
 
@@ -391,7 +395,7 @@ body {
   .card__price-value {
     font-size: 6rem;
     font-weight: 100; }
-  @media only screen and (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     .card {
       height: auto;
       border-radius: 3px;
